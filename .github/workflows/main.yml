@@ -1,0 +1,28 @@
+name: Build QMK Firmware
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install QMK CLI
+        run: |
+          python3 -m pip install --user qmk
+          qmk setup -y
+
+      - name: Build Firmware
+        run: |
+          qmk compile -kb crkbd/rev4_1/standard -km vial
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: corne_v4_firmware
+          path: ./*.uf2
