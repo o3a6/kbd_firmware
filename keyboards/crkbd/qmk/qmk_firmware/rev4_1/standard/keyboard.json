@@ -412,5 +412,12 @@
             {"matrix": [5, 6], "x": 122, "y": 24, "flags": 4}
         ]
     }
+  ,
+  "dynamic_keymap": {
+    "layer_count": 16
+  },
+  "vial": {
+    "layer_count": 16
+  }
 }
 
