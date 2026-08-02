@@ -19,7 +19,9 @@ jobs:
 
       - name: Build Firmware
         run: |
+          cd qmk/qmk_firmware
           qmk compile -kb crkbd/rev4_1/standard -km vial
+          cp ./.build/*.uf2 ../../
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
