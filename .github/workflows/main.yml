@@ -19,19 +19,14 @@ jobs:
 
       - name: Install QMK and Dependencies
         run: |
-          python3 -m pip install --user qmk
-          # QMKの環境を初期化して必要なツール（インクルードファイル等）を強制同期
+          python3 -m pip install --user qmk==1.1.5
           qmk setup -y
           
       - name: Build Firmware
         run: |
-          # リポジトリ内の正しいQMKディレクトリに移動
           cd qmk/qmk_firmware
-          # 設定ファイル群をQMK本体の正しい位置にリンク（コピー）する
           cp -r ../../keyboards/crkbd/qmk/qmk_firmware/keyboards/crkbd/* ./keyboards/crkbd/
-          # ビルドを実行
           qmk compile -kb crkbd/rev4_1/standard -km vial
-          # 成果物を最上位レイヤーに退避
           cp ./.build/*.uf2 ../../
 
       - name: Upload Artifact
