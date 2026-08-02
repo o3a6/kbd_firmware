@@ -411,8 +411,8 @@
             {"matrix": [4, 6], "x": 122, "y": 17, "flags": 4},
             {"matrix": [5, 6], "x": 122, "y": 24, "flags": 4}
         ]
-    }
-  ,
+       }
+  },
   "dynamic_keymap": {
     "layer_count": 16
   },
